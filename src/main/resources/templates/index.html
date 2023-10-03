@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <th:block th:insert="~{common_head :: head}"></th:block>
+  </head>
+
+  <body>
+
+    <div class="hero_area">
+
+      <!-- header section strats -->
+    <header class="header_section" th:replace="~{header :: header}"></header>
+    <!-- end header section -->
+
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div class="slider_bg_box">
+        <img src="images/slider-bg-sm-1.jpg" alt="">
+      </div>
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" th:each="item, iterStat : ${thoughtItems}" th:classappend="${iterStat.index == 0} ? 'active'">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-7">
+                    <div class="detail-box">
+                      <h1 th:text="${item.heading}"></h1>
+                      <p th:text="${item.description}"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+        </ol>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+
+  <!-- service section -->
+    <div th:insert="~{service :: section}"></div>
+    <div th:insert="~{about :: section}"></div>
+<!--    <th:block th:insert="~{service_section :: section}"></th:block>-->
+  <!-- end service section -->
+
+
+  <!-- track section -->
+
+  <section class="track_section layout_padding">
+    <div class="track_bg_box">
+      <img src="images/slider-bg-sm-2.jpg" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="heading_container">
+            <h2>
+              Your value is our pride
+            </h2>
+          </div>
+          <p>
+            At Iraxa Tech Solutions, our customers are the heart of everything we do. Your value is our pride, and we are dedicated to providing you with unmatched technological solutions and services. We understand that your satisfaction is paramount, and we continually strive to exceed your expectations. Join us on a journey where your needs and preferences are our top priority, because, to us, your trust and loyalty are a source of immense pride.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end track section -->
+
+  <!-- client section -->
+    <section class="client_section layout_padding">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            What Says Our <span>Client</span>
+          </h2>
+        </div>
+        <div class="client_container">
+          <div class="carousel-wrap">
+            <div class="owl-carousel">
+              <div class="item" th:each="testimonial : ${testimonials}">
+                <div class="box">
+                  <div class="detail-box">
+                    <p th:text="${testimonial.testimonial}"></p>
+                  </div>
+                  <div class="client_id">
+                    <div class="img-box">
+                      <img th:src="@{${testimonial.imagePath}}" alt="" class="img-1">
+                    </div>
+                    <div class="name">
+                      <h6 th:text="${testimonial.clientName}"></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div th:insert="~{contact :: section}"></div>
+
+  <!-- end client section -->
+
+  <!-- Include the footer -->
+  <footer th:replace="~{footer :: footer}"></footer>
+  <!-- jQery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>
